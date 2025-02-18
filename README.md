@@ -98,18 +98,18 @@ for t=1:Max_iterations
         f_newP2 = fobj(shuru, Y,X_newP2); %Eq (6)
         X_newP2P = f_newP2 + f_newP2 .* (i/Max_iterations).*normpdf(f_newP2,0,1);
         X_newP2P(X_newP2P<0.5)=0;X_newP2P(X_newP2P>=0.5)=1;
-%         if f_newP2 <= fit (i)
-%             X(i,:) = X_newP2;
-%             fit (i)=f_newP2;
-%         end
-%        new_fitness_P2P = fobj(shuru, Y,X_newP2P);
-%         if new_fitness_P2P<f_newP2
-%             X_newP = X_newP2P;
-%             fit (i)= new_fitness_P2P;
-%         else
+         if f_newP2 <= fit (i)
+             X(i,:) = X_newP2;
+             fit (i)=f_newP2;
+         end
+        new_fitness_P2P = fobj(shuru, Y,X_newP2P);
+         if new_fitness_P2P<f_newP2
+             X_newP = X_newP2P;
+             fit (i)= new_fitness_P2P;
+         else
             X_newP = X_newP2;
             fit (i)=f_newP2;
-%         end
+         end
     end 
    
     best_so_far(t)=fbest;
